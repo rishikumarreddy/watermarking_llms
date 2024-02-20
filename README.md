@@ -1,7 +1,7 @@
-# watermarking_llms
+# Watermarking LLMs
 A project that reproduces the results of the paper "A Watermark for Large Language Models" by J Kirchebauer et al.
 
-{/bf Overview:}
+**Overview:**
 The goal of this paper is to develop a watermarking algorithm for proprietary LLMs and to dis-
 tinguish human text from machine generated text. This watermark can be easily detectable
 through algorithms but untraceable by humans. The algorithm used for generation and detec-
@@ -20,7 +20,7 @@ respectively. This tends to increase the watermark strength along with the quali
 Additionally the paper also discusses a technique to make the watermarking algorithm private
 along with different attacks the algorithm can be prone to in detail.
 
-{/bf Reproducibility analysis:}
+**Reproducibility analysis:**
 I was able to reproduce a part of the experiments section provided in the paper. I generated the
 watermarked sequences of the random prompts taken from the C4 dataset with different delta
 and gamma pairs, with OPT-1.3B model for generations and OPT-2.7B model for calculating per-
@@ -43,7 +43,7 @@ Analysis compared to the paper:
     •False Negative rate and True positive rate for the watermark prediction with z score thresh-
     old as 4.0.
 
-{/bf Resources Utilization:}
+**Resources Utilization:**
 The WatermarkLogitsProcesor and the WatermarkDetector are two functions provided by the
 authors in their github repository taken from the extended watermark processor.py file. All my
 generations use the soft watermarking algorithm. The code provided by the authors also includes
@@ -57,7 +57,7 @@ distinction from the authors’ experimentation vs mine is that their implementa
 version of the watermarking algorithm and mine uses the latest version provided by them which
 also includes a lot of changes in naming conventions.
 
-{bf Application on New Datasets/Tasks:}
+**Application on New Datasets/Tasks:**
 One of the issues with this algorithm is that it cannot handle conditional text generation. This
 issue is discussed and a solution is provided in detail in the paper titled “Watermarking Condi-
 tional Text Generation for AI Detection: Unveiling Challenges and a Semantic-Aware Watermark
@@ -72,7 +72,7 @@ to all the documents for each row and the whole document is used as a prompt to 
 sequence of summary with 200 token size limit. A detailed execution of this pipeline is in the
 colab notebook “Watermark generation - Xsum Dataset”.
 
-{/bf Findings and Conclusion:}
+**Findings and Conclusion:**
 The results show a similar pattern of perplexity vs z score both with multinomial sampling and
 beam search generations(refer the analysis notebook for the reproduced graphs). However I
 strongly feel that 25 sequences for each pair of parameters is a very low sample size to evalu-
